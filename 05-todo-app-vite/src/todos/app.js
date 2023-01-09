@@ -10,6 +10,7 @@ import Todo from './models/todo.model'
 const ELEMENTS_REFENRECES = Object.freeze({
   TODOS_LIST: '.todo-list',
   NEW_TODO_INPUT: '#new-todo-input',
+  CLEAR_COMPLETED_BTN: '.clear-completed',
 })
 
 export function app(elementId) {
@@ -27,31 +28,40 @@ export function app(elementId) {
     displayTodos()
   })()
 
-  const newTodoInput = document.querySelector(
+  const $newTodoInput = document.querySelector(
     ELEMENTS_REFENRECES.NEW_TODO_INPUT
   )
-  const todosListUl = document.querySelector(ELEMENTS_REFENRECES.TODOS_LIST)
+  const $todosListUl = document.querySelector(ELEMENTS_REFENRECES.TODOS_LIST)
+  const $clearCompletedBtn = document.querySelector(
+    ELEMENTS_REFENRECES.CLEAR_COMPLETED_BTN
+  )
 
-  newTodoInput.addEventListener('keyup', (e) => {
+  $newTodoInput.addEventListener('keyup', (e) => {
     if (e.keyCode !== 13 || e.target.value.trim().length === 0) return
 
     todoStore.addTodo(new Todo(e.target.value))
+    e.target.value = ''
     displayTodos()
   })
 
-  todosListUl.addEventListener('click', (e) => {
+  $todosListUl.addEventListener('click', (e) => {
     const element = e.target.closest('[data-id]')
     const elementId = element.getAttribute('data-id')
     todoStore.toggleTodo(elementId)
     displayTodos()
   })
 
-  todosListUl.addEventListener('click', (e) => {
+  $todosListUl.addEventListener('click', (e) => {
     if (!e.target.classList.contains('destroy')) return
 
     const element = e.target.closest('[data-id]')
     const elementId = element.getAttribute('data-id')
     todoStore.deleteTodo(elementId)
+    displayTodos()
+  })
+
+  $clearCompletedBtn.addEventListener('click', () => {
+    todoStore.deleteCompleted()
     displayTodos()
   })
 }
