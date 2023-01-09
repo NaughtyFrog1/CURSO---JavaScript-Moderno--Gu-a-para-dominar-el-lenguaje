@@ -1,29 +1,25 @@
 import Todo from '../todos/models/todo.model'
 
+const LOCAL_STORAGE_KEY = 'todo-state'
+
 const Filters = Object.freeze({
-  All: Symbol('all'),
-  Completed: Symbol('completed'),
-  Pending: Symbol('pending'),
+  All: 'all',
+  Completed: 'completed',
+  Pending: 'pending',
 })
 
-const state = {
-  todos: [
-    new Todo('Gema del espacio'),
-    new Todo('Gema de la mente'),
-    new Todo('Gema de la realidad'),
-    new Todo('Gema del poder'),
-    new Todo('Gema del tiempo'),
-    new Todo('Gema del alma'),
-  ],
-  filter: Filters.All,
-}
-
-function initStore() {
-  throw new Error('Not implemented')
-}
+const state = {}
 
 function loadStore() {
-  throw new Error('Not implemented')
+  const localStorageState = localStorage.getItem(LOCAL_STORAGE_KEY)
+  
+  const parsedState = JSON.parse(localStorageState)
+  state.todos = parsedState?.todos ?? []
+  state.filter = parsedState?.filter ?? Filters.All
+}
+
+function saveStateToLocalStorage() {
+  localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(state))
 }
 
 function getTodos(filter) {
@@ -42,11 +38,13 @@ function getTodos(filter) {
 function addTodo(todo) {
   if (!(todo instanceof Todo)) throw new Error('Invalid todo')
   state.todos.push(todo)
+  saveStateToLocalStorage()
 }
 
 function toggleTodo(todoId) {
   const todo = state.todos.find((todo) => todo.id === todoId)
   todo.done = !todo.done
+  saveStateToLocalStorage()
 
   // Menos eficiente:
   // state.todos = state.todos.map((todo) => {
@@ -57,18 +55,21 @@ function toggleTodo(todoId) {
 
 function deleteTodo(todoId) {
   state.todos = state.todos.filter((todo) => todo.id !== todoId)
+  saveStateToLocalStorage()
 }
 
 function deleteCompleted() {
   state.todos = state.todos.filter((todo) => !todo.done)
+  saveStateToLocalStorage()
 }
 
 function setSelectedFilter(newFilter) {
   if (!Object.values(Filters).includes(newFilter)) {
     throw new Error('Invalid filter')
   }
-  
+
   state.filter = newFilter
+  saveStateToLocalStorage()
 }
 
 function getSelectedFilter() {
@@ -77,7 +78,6 @@ function getSelectedFilter() {
 
 export default {
   Filters,
-  initStore,
   loadStore,
   getTodos,
   addTodo,

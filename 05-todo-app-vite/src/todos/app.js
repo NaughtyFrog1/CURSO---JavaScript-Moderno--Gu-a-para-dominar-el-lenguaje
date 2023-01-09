@@ -23,6 +23,7 @@ export function app(elementId) {
     const root = document.createElement('div')
     root.innerHTML = appHtml
     document.querySelector(elementId).append(root)
+    todoStore.loadStore()
     displayTodos()
   })()
 
