@@ -11,6 +11,7 @@ const ELEMENTS_REFENRECES = Object.freeze({
   TODOS_LIST: '.todo-list',
   NEW_TODO_INPUT: '#new-todo-input',
   CLEAR_COMPLETED_BTN: '.clear-completed',
+  TODO_FILTERS_BTNS: '.filtro',
 })
 
 export function app(elementId) {
@@ -35,6 +36,13 @@ export function app(elementId) {
   const $clearCompletedBtn = document.querySelector(
     ELEMENTS_REFENRECES.CLEAR_COMPLETED_BTN
   )
+  const $filtersUl = document.querySelectorAll(
+    ELEMENTS_REFENRECES.TODO_FILTERS_BTNS
+  )
+
+  document
+    .querySelector(`[data-filter="${todoStore.getSelectedFilter()}"]`)
+    .classList.add('selected')
 
   $newTodoInput.addEventListener('keyup', (e) => {
     if (e.keyCode !== 13 || e.target.value.trim().length === 0) return
@@ -64,4 +72,20 @@ export function app(elementId) {
     todoStore.deleteCompleted()
     displayTodos()
   })
+
+  $filtersUl.forEach((element) => {
+    element.addEventListener('click', (e) => {
+      const $prevSelected = document.querySelector(
+        `${ELEMENTS_REFENRECES.TODO_FILTERS_BTNS}.selected`
+      )
+      $prevSelected.classList.remove('selected')
+
+      element.classList.add('selected')
+
+      const newFilter = element.getAttribute('data-filter')
+      todoStore.setSelectedFilter(newFilter)
+      displayTodos()
+    })
+  })
+  displayTodos()
 }

@@ -12,7 +12,6 @@ const state = {}
 
 function loadStore() {
   const localStorageState = localStorage.getItem(LOCAL_STORAGE_KEY)
-  
   const parsedState = JSON.parse(localStorageState)
   state.todos = parsedState?.todos ?? []
   state.filter = parsedState?.filter ?? Filters.All
