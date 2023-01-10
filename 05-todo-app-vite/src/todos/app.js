@@ -6,19 +6,27 @@ import appHtml from './app.html?raw'
 import todoStore from '../store/todo.store'
 import { renderTodos } from '../use-cases/renderTodos'
 import Todo from './models/todo.model'
+import { renderPending } from '../use-cases/renderPending'
 
 const ELEMENTS_REFENRECES = Object.freeze({
   TODOS_LIST: '.todo-list',
   NEW_TODO_INPUT: '#new-todo-input',
   CLEAR_COMPLETED_BTN: '.clear-completed',
   TODO_FILTERS_BTNS: '.filtro',
+  PENDING_COUNT: '#pending-count'
 })
 
 export function app(elementId) {
+  function updatePendingCounter() {
+    const element = document.querySelector(ELEMENTS_REFENRECES.PENDING_COUNT)
+    renderPending(element)
+  }
+  
   function displayTodos() {
     const todoList = document.querySelector(ELEMENTS_REFENRECES.TODOS_LIST)
     const todos = todoStore.getTodos(todoStore.getSelectedFilter())
     renderTodos(todoList, todos)
+    updatePendingCounter()
   }
 
   ;(() => {
