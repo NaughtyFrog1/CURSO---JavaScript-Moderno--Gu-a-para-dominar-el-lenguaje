@@ -1,5 +1,6 @@
 import './style.css'
 import javascriptLogo from './javascript.svg'
+import { environmentsComponent } from './src/concepts/01-environments'
 
 document.querySelector('#app').innerHTML = `
   <div>
@@ -9,8 +10,12 @@ document.querySelector('#app').innerHTML = `
     <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript" target="_blank">
       <img src="${javascriptLogo}" class="logo vanilla" alt="JavaScript logo" />
     </a>
-    <h1>Hello Vite!</h1>
-    <div class="card">
-    </div>
+    <h1>Variables de entorno</h1>
+    <pre class="card" style="text-align: left">
+    </pre>
   </div>
 `
+
+const element = document.querySelector('pre.card')
+
+environmentsComponent(element)
