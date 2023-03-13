@@ -82,6 +82,6 @@ function findHero(id) {
       resolve(hero)
       return
     }
-    reject(`Hero with id "${id}" not fount`)
+    reject(`Hero with id "${id}" not found`)
   })
 }
