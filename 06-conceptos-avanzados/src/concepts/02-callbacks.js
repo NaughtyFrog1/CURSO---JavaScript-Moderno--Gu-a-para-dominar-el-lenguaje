@@ -20,7 +20,7 @@ function findHero(id, callback) {
   const hero = heroes.find(hero => hero.id === id)
 
   if (!hero) {
-    callback(`Hero with id "${id}" not fount`)
+    callback(`Hero with id "${id}" not found`)
     return
   }
 
