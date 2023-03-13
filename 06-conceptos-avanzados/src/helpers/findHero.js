@@ -29,3 +29,10 @@ export function findHero_promise(id) {
     reject(`Hero with id "${id}" not found`)
   })
 }
+
+export async function findHero_async(id) {
+  const hero = heroes.find((h) => h.id === id)
+
+  if (hero) return hero
+  throw new Error(`Hero with id "${id}" not found`)
+}

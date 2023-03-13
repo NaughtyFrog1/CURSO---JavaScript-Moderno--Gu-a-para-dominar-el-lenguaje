@@ -3,7 +3,7 @@ import { findHero_promise } from '../helpers/findHero'
 export function promiseComponent(element) {
   const id = '5d86371f25a058e5b1c8a65e'
 
-  findHero(id)
+  findHero_promise(id)
     .then((hero) => {
       element.innerHTML = hero.name
     })

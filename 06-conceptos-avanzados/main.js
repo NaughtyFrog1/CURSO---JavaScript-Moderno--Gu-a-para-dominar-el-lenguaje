@@ -5,7 +5,7 @@ import { callbacksComponent } from './src/concepts/02-callbacks'
 import * as promises from './src/concepts/03-promises'
 import { promiseAllSettledComponent } from './src/concepts/04.02-promiseAllSettled'
 import { multiplePromisesComponent } from './src/concepts/04.03-multiplePromises'
-
+import { asyncComponent } from './src/concepts/05-async'
 
 document.querySelector('#app').innerHTML = `
   <div>
@@ -31,5 +31,5 @@ const element = document.querySelector('pre.card')
 // promises.promiseAllComponent(element)
 // promiseRaceComponent(element)
 // promiseAllSettledComponent(element)
-multiplePromisesComponent(element)
-
+// multiplePromisesComponent(element)
+asyncComponent(element)
