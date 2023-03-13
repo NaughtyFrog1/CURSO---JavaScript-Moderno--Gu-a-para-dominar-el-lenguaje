@@ -63,6 +63,7 @@ h2 {
 
 .card {
   padding: 2em;
+  min-width: 600px;
 }
 
 .read-the-docs {

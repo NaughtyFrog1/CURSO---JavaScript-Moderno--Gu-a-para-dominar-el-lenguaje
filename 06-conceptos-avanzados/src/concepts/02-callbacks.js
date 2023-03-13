@@ -1,28 +1,8 @@
-import { heroes } from '../data/heroes'
+import { findHero_callback } from '../helpers/findHero'
 
-/**
- *
- * @param {HTMLDivElement} element
- */
 export function callbacksComponent(element) {
   const id = '5d86371f1efebc31def272e2'
-  findHero(id, (error, hero) => {
+  findHero_callback(id, (error, hero) => {
     element.innerHTML = error ?? hero.name
   })
-}
-
-/**
- * 
- * @param {String} id 
- * @param {(error?: string, hero: object) => void} callback 
- */
-function findHero(id, callback) {
-  const hero = heroes.find(hero => hero.id === id)
-
-  if (!hero) {
-    callback(`Hero with id "${id}" not found`)
-    return
-  }
-
-  callback(null, hero)
 }

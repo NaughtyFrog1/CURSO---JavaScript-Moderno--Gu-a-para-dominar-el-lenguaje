@@ -1,10 +1,6 @@
 import { heroes } from '../data/heroes'
 
-/**
- *
- * @param {HTMLDivElement} element
- */
-export function testComponent(element) {
+export function multiplePromisesComponent(element) {
   const heroesIds = [
     '5d86371f1efebc31def272e2', // Iron Man
     '5d86371f2343e37870b91ef1', // Hulk
@@ -63,5 +59,5 @@ function renderHero(hero) {
 
 function renderError(error) {
   const span = document.querySelector(`span[data-id="${error.id}"]`)
-  span.innerHTML = error.message
+  span.innerHTML = 'ERROR: ' + error.message
 }

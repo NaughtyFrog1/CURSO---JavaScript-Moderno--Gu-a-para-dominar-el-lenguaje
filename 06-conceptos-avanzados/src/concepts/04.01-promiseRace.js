@@ -1,7 +1,3 @@
-/**
- * 
- * @param {HTMLDivElement} element 
- */
 export function promiseRaceComponent(element) {
   function renderValue(value) {
     element.innerHTML = value

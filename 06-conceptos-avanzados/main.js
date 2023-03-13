@@ -2,10 +2,10 @@ import './style.css'
 import javascriptLogo from './javascript.svg'
 import { environmentsComponent } from './src/concepts/01-environments'
 import { callbacksComponent } from './src/concepts/02-callbacks'
-import { promisesComponent } from './src/concepts/03-promises'
-import { promiseRaceComponent } from './src/concepts/04.01-promiseRace'
+import * as promises from './src/concepts/03-promises'
 import { promiseAllSettledComponent } from './src/concepts/04.02-promiseAllSettled'
-import { testComponent } from './src/concepts/99-test'
+import { multiplePromisesComponent } from './src/concepts/04.03-multiplePromises'
+
 
 document.querySelector('#app').innerHTML = `
   <div>
@@ -25,7 +25,11 @@ const element = document.querySelector('pre.card')
 
 // environmentsComponent(element)
 // callbacksComponent(element)
-// promisesComponent(element)
+// promises.promiseComponent(element)
+// promises.promiseHellComponent(element)
+// promises.promiseChainingComponent(element)
+// promises.promiseAllComponent(element)
 // promiseRaceComponent(element)
 // promiseAllSettledComponent(element)
-testComponent(element)
+multiplePromisesComponent(element)
+

@@ -1,9 +1,5 @@
 import { heroes } from '../data/heroes'
 
-/**
- *
- * @param {HTMLDivElement} element
- */
 export function promiseAllSettledComponent(element) {
   function appendValue(value) {
     element.innerHTML += value
