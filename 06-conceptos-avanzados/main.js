@@ -9,6 +9,7 @@ import { asyncComponent } from './src/concepts/05-async'
 import { asyncAwaitComponent } from './src/concepts/06-asyncAwait'
 import { asyncAwaitNoSecuencialComponent } from './src/concepts/07-asyncAwaitNoSecuencial'
 import { ifAwaitComponent, forAwaitComponent } from './src/concepts/08-forAwait'
+import { generatorsComponent } from './src/concepts/09-generators'
 
 document.querySelector('#app').innerHTML = `
   <div>
@@ -39,4 +40,5 @@ const element = document.querySelector('pre.card')
 // asyncAwaitComponent(element)
 // asyncAwaitNoSecuencialComponent(element)
 // ifAwaitComponent(element)
-forAwaitComponent(element)
+// forAwaitComponent(element)
+generatorsComponent(element)
