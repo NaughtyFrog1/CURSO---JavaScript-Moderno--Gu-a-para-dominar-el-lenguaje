@@ -7,6 +7,7 @@ import { promiseAllSettledComponent } from './src/concepts/04.02-promiseAllSettl
 import { multiplePromisesComponent } from './src/concepts/04.03-multiplePromises'
 import { asyncComponent } from './src/concepts/05-async'
 import { asyncAwaitComponent } from './src/concepts/06-asyncAwait'
+import { asyncAwaitNoSecuencialComponent } from './src/concepts/07-asyncAwaitNoSecuencial'
 
 document.querySelector('#app').innerHTML = `
   <div>
@@ -34,4 +35,5 @@ const element = document.querySelector('pre.card')
 // promiseAllSettledComponent(element)
 // multiplePromisesComponent(element)
 // asyncComponent(element)
-asyncAwaitComponent(element)
+// asyncAwaitComponent(element)
+asyncAwaitNoSecuencialComponent(element)
