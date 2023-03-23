@@ -5,14 +5,22 @@ import FormUser from '../FormUser/FormUser'
 import { updateTable } from '../Table/Table'
 import Modal from './Modal'
 
-function ModalUpdateUser(user) {
+function ModalUpdateUser() {
+  let user
+
   const modal = Modal(
     'Update user',
     (parentNode) => FormUser('Update', handleSubmit, parentNode),
     setFormValues
   )
 
-  return modal
+
+  function showModal(u) {
+    user = u
+    modal.showModal()
+  }
+
+  return { hideModal: modal.hideModal, showModal }
 
   async function handleSubmit(e, updatedUser) {
     updatedUser.id = user.id

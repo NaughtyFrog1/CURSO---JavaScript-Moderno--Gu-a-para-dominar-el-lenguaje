@@ -3,9 +3,9 @@ import deleteUserById from '../../use-cases/deleteUserById'
 import ModalUpdateUser from '../Modal/ModalUpdateUser'
 import { updateTable } from './Table'
 
-function TableRow(user, parentNode) {
-  const modal = ModalUpdateUser(user)
+const modal = ModalUpdateUser()
 
+function TableRow(user, parentNode) {
   const $row = document.createElement('tr')
   $row.innerHTML = `
     <td class="users-table__id">${user.id}</td>
@@ -43,7 +43,7 @@ function TableRow(user, parentNode) {
   parentNode.append($row)
 
   $avatarImg.addEventListener('error', handleAvatarImageError)
-  $actionUpdateBtn.addEventListener('click', modal.showModal)
+  $actionUpdateBtn.addEventListener('click', () => modal.showModal(user))
   $actionDeleteBtn.addEventListener('click', handleDeleteBtnClick)
 
   function handleAvatarImageError(e) {
