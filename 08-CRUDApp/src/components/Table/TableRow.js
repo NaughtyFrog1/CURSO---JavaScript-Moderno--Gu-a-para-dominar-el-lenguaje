@@ -2,9 +2,7 @@ function TableRow(user, parentNode) {
   const $row = document.createElement('tr')
   $row.innerHTML = `
     <td class="users-table__id">${user.id}</td>
-    <td class="users-table__avatar">
-      <img src="${user.avatar}" />
-    </td>
+    <td class="users-table__avatar"></td>
     <td>${user.firstname}</td>
     <td>${user.lastname}</td>
     <td class="users-table__gender">${user.gender}</td>
@@ -14,7 +12,14 @@ function TableRow(user, parentNode) {
         <input type="checkbox" disabled ${user.isActive ? 'checked' : ''} />
       </div>
     </td>
+    <td class="users-table__actions">
+      <div></div>
+    </td>
   `
+
+  const $avatarImg = document.createElement('img')
+  $avatarImg.src = user.avatar
+  $row.querySelector('.users-table__avatar').append($avatarImg)
 
   const $actionUpdateBtn = document.createElement('button')
   $actionUpdateBtn.classList.add('users-table__action-btn')
@@ -24,23 +29,32 @@ function TableRow(user, parentNode) {
   $actionDeleteBtn.classList.add('users-table__action-btn')
   $actionDeleteBtn.innerHTML = '<img src="./trash.svg" />'
 
-  const $actionsContent = document.createElement('div')
-  $actionsContent.append($actionUpdateBtn, $actionDeleteBtn)
+  $row
+    .querySelector('.users-table__actions div')
+    .append($actionUpdateBtn, $actionDeleteBtn)
 
-  const $actions = document.createElement('td')
-  $actions.classList.add('users-table__actions')
-  $actions.append($actionsContent)
-
-  $row.append($actions)
   parentNode.append($row)
 
-  $actionUpdateBtn.addEventListener('click', () => {
-    console.log('click update', user)
-  })
+  $avatarImg.addEventListener('error', handleAvatarImageError)
+  $actionUpdateBtn.addEventListener('click', handleUpdateBtnClick)
+  $actionDeleteBtn.addEventListener('click', handleDeleteBtnClick)
 
-  $actionDeleteBtn.addEventListener('click', () => {
+  function handleAvatarImageError(e) {
+    const $container = $row.querySelector('.users-table__avatar')
+    $container.innerHTML = `
+      <div class="bg-dark">
+        <span>${user.firstname[0]}${user.lastname[0]}</span>
+      </div>
+    `
+  }
+
+  function handleUpdateBtnClick() {
+    console.log('click update', user)
+  }
+
+  function handleDeleteBtnClick() {
     console.log('click delete', user)
-  })
+  }
 }
 
 export default TableRow

@@ -17,10 +17,12 @@
 
 .users-table__avatar,
 .users-table__isActive div,
-.users-table__actions div {
+.users-table__actions div,
+.users-table__avatar div  {
   display: flex;
   justify-content: center;
-  gap: 0.5em;
+  align-items: center;
+  gap: 0.75em;
 }
 
 .users-table__id,
@@ -28,10 +30,15 @@
   text-align: right;
 }
 
-.users-table__avatar img {
+.users-table__avatar img,
+.users-table__avatar div {
   width: 2.5em;
   height: 2.5em;
   border-radius: 100%;
+}
+
+.users-table__avatar div {
+  text-transform: uppercase;
 }
 
 .users-table__gender {
