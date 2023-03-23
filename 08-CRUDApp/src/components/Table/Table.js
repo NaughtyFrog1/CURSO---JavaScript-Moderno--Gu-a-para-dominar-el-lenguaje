@@ -2,8 +2,10 @@ import './Table.css'
 import { getUsers } from '../../context/usersContext'
 import TableRow from './TableRow'
 
+let $table, $tbody
+
 function Table(parentNode) {
-  const $table = document.createElement('table')
+  $table = document.createElement('table')
   $table.classList.add('users-table')
 
   const $thead = document.createElement('thead')
@@ -21,11 +23,16 @@ function Table(parentNode) {
     </tr>
   `
 
-  const $tbody = document.createElement('tbody')
-  getUsers().forEach((user) => TableRow(user, $tbody))
+  $tbody = document.createElement('tbody')
+  updateTable()
 
   $table.append($thead, $tbody)
   parentNode.append($table)
 }
 
-export default Table
+function updateTable() {
+  $tbody.innerHTML = ''
+  getUsers().forEach((user) => TableRow(user, $tbody))
+}
+
+export { Table as default, updateTable }

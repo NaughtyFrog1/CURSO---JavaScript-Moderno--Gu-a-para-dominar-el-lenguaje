@@ -1,7 +1,7 @@
 .users-table {
   border-collapse: collapse;
   border: var(--border);
-  margin-bottom: 3.2rem;
+  margin-bottom: 2.5em;
   box-shadow: var(--shadow);
 }
 

@@ -1,0 +1,25 @@
+.pagination {
+  display: grid;
+  grid-template-columns: 1fr 1.5fr 1fr;
+  box-shadow: var(--shadow);
+}
+
+.pagination button,
+.pagination span {
+  padding: 0.75em;
+}
+
+.pagination button {
+  font-weight: 900;
+  transition: var(--transition);
+}
+
+.pagination button:hover {
+  color: hsl(0, 0%, 40%)
+}
+
+.pagination span {
+  text-align: center;
+  border-top: var(--border);
+  border-bottom: var(--border);
+}

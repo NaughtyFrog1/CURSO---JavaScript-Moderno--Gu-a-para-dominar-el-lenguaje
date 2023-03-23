@@ -36,6 +36,12 @@ body {
   color: #fff;
 }
 
+.btn {
+  outline: 0;
+  border: 0;
+  cursor: pointer;
+}
+
 input[type='checkbox'] {
   visibility: hidden;
   position: relative;

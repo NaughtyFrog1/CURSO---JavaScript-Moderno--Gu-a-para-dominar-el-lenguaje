@@ -16,11 +16,11 @@ export async function loadPage(page) {
 }
 
 export async function loadNextPage() {
-  loadPage(state.currentPage + 1)
+  await loadPage(state.currentPage + 1)
 }
 
 export async function loadPreviousPage() {
-  loadPage(state.currentPage - 1)
+  await loadPage(state.currentPage - 1)
 }
 
 export function getUsers() {
