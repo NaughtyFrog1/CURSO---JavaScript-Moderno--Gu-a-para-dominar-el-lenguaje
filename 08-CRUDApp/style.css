@@ -1,0 +1,129 @@
+:root {
+  font-family: 'Courier New', Courier, monospace;
+
+  /* Shadow */
+
+  --shadow-color: rgba(0, 0, 0, 0.4);
+  --shadow-color-error: rgba(255, 0, 0, 0.4);
+
+  --shadow-size-sm: 0.1rem;
+  --shadow-size-md: 0.2rem;
+  --shadow-size: 0.4rem;
+  --shadow-size-lg: 0.6rem;
+
+  --shadow-sm: var(--shadow-size-sm) var(--shadow-size-sm) 0 var(--shadow-color);
+  --shadow-md: var(--shadow-size-md) var(--shadow-size-md) 0 var(--shadow-color);
+  --shadow: var(--shadow-size) var(--shadow-size) 0 var(--shadow-color);
+  --shadow-lg: var(--shadow-size-lg) var(--shadow-size-lg) 0 var(--shadow-color);
+
+  --shadow-error-sm: var(--shadow-size-sm) var(--shadow-size-sm) 0
+    var(--shadow-color-error);
+  --shadow-error-md: var(--shadow-size-md) var(--shadow-size-md) 0
+    var(--shadow-color-error);
+  --shadow-error: var(--shadow-size) var(--shadow-size) 0
+    var(--shadow-color-error);
+  --shadow-error-lg: var(--shadow-size-lg) var(--shadow-size-lg) 0
+    var(--shadow-color-error);
+
+  /* Border */
+
+  --border-color: #000;
+  --border-color-error: hsl(0, 100%, 40%);
+
+  --border: 1px solid var(--border-color);
+  --border-error: 1px solid var(--border-color-error);
+
+  /* Transition */
+
+  --transition: 0.2s ease-in-out;
+}
+
+html {
+  box-sizing: border-box;
+  font-size: 62.5%; /* 1rem = 10px */
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+body {
+  font-size: 1.6rem;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2em;
+}
+
+.bg-dark {
+  background-color: #000;
+  color: #fff;
+}
+
+.bg-light {
+  background-color: #fff;
+  color: #000;
+}
+
+.btn {
+  outline: 0;
+  border: 0;
+  cursor: pointer;
+  line-height: 1;
+}
+
+.btn--primary {
+  border: var(--border);
+  font-weight: 700;
+  padding: 0.6em 1em;
+  box-shadow: var(--shadow-md);
+  transition: 0.2s ease-in-out box-shadow, 0.1s ease-in-out color,
+    0.1s ease-in-out background-color;
+}
+
+.btn--primary:hover {
+  box-shadow: var(--shadow);
+}
+
+.btn--primary.bg-light:hover {
+  background-color: #000;
+  color: #fff;
+}
+
+input[type='checkbox'] {
+  visibility: hidden;
+  position: relative;
+  cursor: pointer;
+}
+
+input[type='checkbox']::before {
+  visibility: visible;
+  position: absolute;
+  left: 0;
+  top: 0;
+  content: '';
+  width: 1em;
+  height: 1em;
+  border: var(--border);
+  box-shadow: var(--shadow-sm);
+  transition: var(--transition);
+}
+
+input[type='checkbox']:checked::before {
+  background-color: #000;
+  color: #fff;
+  content: url('./check.svg');
+  box-shadow: var(--shadow-md);
+}
+
+input[type='checkbox']:hover:not(:disabled):before {
+  box-shadow: var(--shadow-md);
+}
+
+input[type='checkbox']:disabled {
+  cursor: not-allowed;
+}
