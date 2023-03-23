@@ -1,4 +1,8 @@
+import ModalUpdateUser from '../Modal/ModalUpdateUser'
+
 function TableRow(user, parentNode) {
+  const modal = ModalUpdateUser(user)
+
   const $row = document.createElement('tr')
   $row.innerHTML = `
     <td class="users-table__id">${user.id}</td>
@@ -36,7 +40,7 @@ function TableRow(user, parentNode) {
   parentNode.append($row)
 
   $avatarImg.addEventListener('error', handleAvatarImageError)
-  $actionUpdateBtn.addEventListener('click', handleUpdateBtnClick)
+  $actionUpdateBtn.addEventListener('click', modal.showModal)
   $actionDeleteBtn.addEventListener('click', handleDeleteBtnClick)
 
   function handleAvatarImageError(e) {
@@ -46,10 +50,6 @@ function TableRow(user, parentNode) {
         <span>${user.firstname[0]}${user.lastname[0]}</span>
       </div>
     `
-  }
-
-  function handleUpdateBtnClick() {
-    console.log('click update', user)
   }
 
   function handleDeleteBtnClick() {
