@@ -1,0 +1,18 @@
+.new-user-btn {
+  grid-area: NewUserButton;
+  justify-self: end;
+  width: fit-content;
+
+  border: var(--border);
+  font-weight: 900;
+  padding: 0.75em;
+  aspect-ratio: 1 / 1;
+  box-shadow: var(--shadow);
+  transition: 0.1s ease-in-out, var(--transition) box-shadow 0.1s;
+}
+
+.new-user-btn:hover {
+  background-color: #000;
+  color: #fff;
+  box-shadow: var(--shadow-lg);
+}
