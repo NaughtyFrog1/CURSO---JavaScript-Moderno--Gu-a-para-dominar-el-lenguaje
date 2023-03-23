@@ -1,7 +1,13 @@
 :root {
   font-family: 'Courier New', Courier, monospace;
 
-  --shadow: 0.4rem 0.4rem 0 rgba(0, 0, 0, 0.4);
+  --shadow-color: rgba(0, 0, 0, 0.4);
+  --shadow-sm: 0.1rem 0.1rem 0 var(--shadow-color);
+  --shadow-md: 0.2rem 0.2rem 0 var(--shadow-color);
+  --shadow: 0.4rem 0.4rem 0 var(--shadow-color);
+  
+  --border: 1px solid #000;
+  --transition: 0.2s ease-in-out;
 }
 
 html {
@@ -28,4 +34,38 @@ body {
 .bg-dark {
   background-color: #000;
   color: #fff;
+}
+
+input[type='checkbox'] {
+  visibility: hidden;
+  position: relative;
+  cursor: pointer;
+}
+
+input[type='checkbox']::before {
+  visibility: visible;
+  position: absolute;
+  left: 0;
+  top: 0;
+  content: '';
+  width: 1em;
+  height: 1em;
+  border: var(--border);
+  box-shadow: var(--shadow-sm);
+  transition: var(--transition);
+}
+
+input[type='checkbox']:checked::before {
+  background-color: #000;
+  color: #fff;
+  content: url('./check.svg');
+  box-shadow: var(--shadow-md);
+}
+
+input[type='checkbox']:hover:not(:disabled):before {
+  box-shadow: var(--shadow-md);
+}
+
+input[type='checkbox']:disabled {
+  cursor: not-allowed;
 }

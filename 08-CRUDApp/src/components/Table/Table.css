@@ -1,6 +1,6 @@
 .users-table {
   border-collapse: collapse;
-  border: 1px solid #000;
+  border: var(--border);
   margin-bottom: 3.2rem;
   box-shadow: var(--shadow);
 }
