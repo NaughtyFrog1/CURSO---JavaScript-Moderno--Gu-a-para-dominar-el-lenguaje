@@ -1,4 +1,7 @@
+import { getCurrentPage, getUsers, loadPage, loadPreviousPage } from '../../context/usersContext'
+import deleteUserById from '../../use-cases/deleteUserById'
 import ModalUpdateUser from '../Modal/ModalUpdateUser'
+import { updateTable } from './Table'
 
 function TableRow(user, parentNode) {
   const modal = ModalUpdateUser(user)
@@ -52,8 +55,15 @@ function TableRow(user, parentNode) {
     `
   }
 
-  function handleDeleteBtnClick() {
-    console.log('click delete', user)
+  async function handleDeleteBtnClick() {
+    await deleteUserById(user.id)
+
+    if (getUsers().length === 1 && getCurrentPage() > 1) {
+        await loadPreviousPage()
+    } else {
+      await loadPage(getCurrentPage())
+    }
+    updateTable()
   }
 }
 

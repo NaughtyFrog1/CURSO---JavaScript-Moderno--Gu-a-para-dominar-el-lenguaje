@@ -9,10 +9,11 @@ export async function loadPage(page) {
   if (page <= 0) return
 
   const users = await loadUsersByPage(page)
-  if (users.length === 0) return
+
+  if (users.length === 0 && page !== 1) return
 
   state.currentPage = page
-  state.users = await loadUsersByPage(page)
+  state.users = users
 }
 
 export async function loadNextPage() {
