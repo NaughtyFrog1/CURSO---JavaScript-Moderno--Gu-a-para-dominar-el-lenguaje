@@ -30,3 +30,11 @@ export function getUsers() {
 export function getCurrentPage() {
   return state.currentPage
 }
+
+export function addUserToCurrentPage(user) {
+  if (state.users.length >= 10) {
+    throw new Error('There are already 10 users on the page')
+  }
+
+  state.users.push(user)
+}

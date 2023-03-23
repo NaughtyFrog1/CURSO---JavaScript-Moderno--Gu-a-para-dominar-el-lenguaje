@@ -1,0 +1,48 @@
+.input-group {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: 1fr 2fr;
+  align-items: baseline;
+  width: 100%;
+  margin-bottom: 1em;
+}
+
+ input[type='text'],
+ input[type='number'],
+ select {
+  outline: 0;
+  border-radius: 0;
+  padding: 0.25em;
+  border: var(--border);
+  box-shadow: var(--shadow-md);
+  transition: var(--transition);
+}
+
+ select {
+  background-color: transparent;
+}
+
+ input[type='text']:focus,
+ input[type='number']:focus,
+ select:focus {
+  box-shadow: var(--shadow);
+}
+
+.error input[type='text'],
+.error input[type='number'],
+.error select {
+  box-shadow: var(--shadow-error-md);
+  border: var(--border-error);
+}
+
+.error input[type='text']:focus,
+.error input[type='number']:focus,
+.error select:focus {
+  box-shadow: var(--shadow-error);
+}
+
+button[type="submit"] {
+  margin-right: 0;
+  margin-left: auto;
+  display: block;
+}
