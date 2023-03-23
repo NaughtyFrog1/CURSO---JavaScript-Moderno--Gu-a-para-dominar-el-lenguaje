@@ -1,0 +1,53 @@
+.users-table {
+  border-collapse: collapse;
+  border: 1px solid #000;
+  margin-bottom: 3.2rem;
+  box-shadow: var(--shadow);
+}
+
+.users-table th,
+.users-table td {
+  padding: 0.75em 1.25em;
+  line-height: 1;
+}
+
+.users-table tr:nth-child(even) {
+  background-color: #f7f7f7;
+}
+
+.users-table__avatar,
+.users-table__isActive div,
+.users-table__actions div {
+  display: flex;
+  justify-content: center;
+  gap: 0.5em;
+}
+
+.users-table__id,
+.users-table__balance {
+  text-align: right;
+}
+
+.users-table__avatar img {
+  width: 2.5em;
+  height: 2.5em;
+  border-radius: 100%;
+}
+
+.users-table__gender {
+  text-transform: capitalize;
+}
+
+.users-table__action-btn {
+  background-color: transparent;
+  outline: 0;
+  border: 0;
+  width: 1.2em;
+  height: 1.2em;
+  padding: 0;
+  cursor: pointer;
+}
+
+.users-table__action-btn img {
+  width: 100%;
+}
