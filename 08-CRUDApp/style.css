@@ -16,3 +16,14 @@ html {
 body {
   font-size: 1.6rem;
 }
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2em;
+}
+
+.bg-dark {
+  background-color: #000;
+  color: #fff;
+}
