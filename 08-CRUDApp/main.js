@@ -1,8 +1,6 @@
 import 'normalize.css'
 import './style.css'
+import App from './src/components/App'
 
-document.querySelector('#app').innerHTML = `
-  <div>
-    Hello, World!
-  </div>
-`
+const $root = document.querySelector('#app')
+App($root)
